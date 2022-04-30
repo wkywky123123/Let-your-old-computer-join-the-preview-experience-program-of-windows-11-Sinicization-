@@ -21,7 +21,7 @@ for /f "tokens=6 delims=[]. " %%i in ('ver') do set build=%%i
 
 if %build% LSS 17763 (
     echo =============================================================
-    echo The script is compatible only with Windows 10 v1809 and later
+    echo è¯¥è„šæœ¬ä»…ä¸Ž Windows 10 v1809 åŠæ›´é«˜ç‰ˆæœ¬å…¼å®¹
     echo =============================================================
     echo.
     pause
@@ -32,7 +32,7 @@ reg query HKU\S-1-5-19 1>nul 2>nul
 if %ERRORLEVEL% equ 0 goto :START_SCRIPT
 
 echo =====================================================
-echo ÇëÒÔ¹ÜÀíÔ±Éí·ÝÔËÐÐ
+echo è¯·ä»¥ç®¡ç†å‘˜èº«ä»½è¿è¡Œ
 echo =====================================================
 echo.
 pause
@@ -48,14 +48,14 @@ cls
 title OfflineInsiderEnroll v%scriptver%
 set "choice="
 echo.
-echo 1 - ¼ÓÈëDevÔ¤ÀÀÆµµÀ
-echo 2 - ¼ÓÈëBetaÔ¤ÀÀÆµµÀ
-echo 3 - ¼ÓÈëRelease PreviewÔ¤ÀÀÆµµÀ
+echo 1 - åŠ å…¥Devé¢„è§ˆé¢‘é“
+echo 2 - åŠ å…¥Betaé¢„è§ˆé¢‘é“
+echo 3 - åŠ å…¥Release Previewé¢„è§ˆé¢‘é“
 echo.
-echo 4 - Í£Ö¹½ÓÊÕÄÚ²¿Ô¤ÀÀ°æ±¾
-echo 5 - ²»×÷ÈÎºÎ¸ü¸ÄÖ±½ÓÍË³ö
+echo 4 - åœæ­¢æŽ¥æ”¶å†…éƒ¨é¢„è§ˆç‰ˆæœ¬
+echo 5 - ä¸ä½œä»»ä½•æ›´æ”¹ç›´æŽ¥é€€å‡º
 echo.
-set /p choice="ÇëÑ¡Ôñ£º "
+set /p choice="è¯·é€‰æ‹©ï¼š "
 echo.
 if /I "%choice%"=="1" goto :ENROLL_DEV
 if /I "%choice%"=="2" goto :ENROLL_BETA
@@ -180,33 +180,33 @@ del /f /q "%SystemRoot%\oie.reg"
 goto :EOF
 
 :ENROLL
-echo ÕýÔÚ×ö³ö¸ü¸Ä
+echo æ­£åœ¨åšå‡ºæ›´æ”¹
 call :RESET_INSIDER_CONFIG 1>NUL 2>NUL
 call :ADD_INSIDER_CONFIG 1>NUL 2>NUL
 bcdedit /set {current} flightsigning yes >nul 2>&1
-echo Íê³É£¡
+echo å®Œæˆï¼
 
 echo.
 if %FlightSigningEnabled% neq 1 goto :ASK_FOR_REBOOT
-echo Çë°´ÈÎÒâ¼üÍË³ö
+echo è¯·æŒ‰ä»»æ„é”®é€€å‡º
 pause >nul
 goto :EOF
 
 :STOP_INSIDER
-echo ÕýÔÚ×ö³ö¸ü¸Ä
+echo æ­£åœ¨åšå‡ºæ›´æ”¹
 call :RESET_INSIDER_CONFIG 1>nul 2>nul
 bcdedit /deletevalue {current} flightsigning >nul 2>&1
-echo Íê³É£¡
+echo å®Œæˆï¼
 
 echo.
 if %FlightSigningEnabled% neq 0 goto :ASK_FOR_REBOOT
-echo Çë°´ÈÎÒâ¼üÍË³ö
+echo è¯·æŒ‰ä»»æ„é”®é€€å‡º
 pause >nul
 goto :EOF
 
 :ASK_FOR_REBOOT
 set "choice="
-echo ÐèÒªÖØÐÂÆô¶¯ÄúµÄ¼ÆËã»ú²ÅÄÜÍê³ÉÓ¦ÓÃÕâÐ©¸ü¸Ä
-set /p choice="È·¶¨ÒªÖØÆôÄúµÄ¼ÆËã»úÂð? (ÊÇ/·ñ) "
-if /I "%choice%"=="ÊÇ" shutdown -r -t 0
+echo éœ€è¦é‡æ–°å¯åŠ¨æ‚¨çš„è®¡ç®—æœºæ‰èƒ½å®Œæˆåº”ç”¨è¿™äº›æ›´æ”¹
+set /p choice="ç¡®å®šè¦é‡å¯æ‚¨çš„è®¡ç®—æœºå—? (æ˜¯/å¦) "
+if /I "%choice%"=="æ˜¯" shutdown -r -t 0
 goto :EOF
