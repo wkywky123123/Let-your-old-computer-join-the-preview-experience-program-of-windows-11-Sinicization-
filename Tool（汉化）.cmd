@@ -207,6 +207,6 @@ goto :EOF
 :ASK_FOR_REBOOT
 set "choice="
 echo 需要重新启动您的计算机才能完成应用这些更改
-set /p choice="确定要重启您的计算机吗? (是/否) "
-if /I "%choice%"=="是" shutdown -r -t 0
+set /p choice="确定要重启您的计算机吗?如果选择是，我们将会在3分钟以后关闭您的计算机 (是/否) "
+if /I "%choice%"=="是" shutdown -r -t 180
 goto :EOF
